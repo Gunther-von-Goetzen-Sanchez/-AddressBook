@@ -15,7 +15,7 @@ C:\AddressBook>git pull https://github.com/Gunther-von-Goetzen-Sanchez/AddressBo
 
 Make sure you have configured your driver to be SQlite and you have the right path to your DB
 
-# Doctrine Configuration
+Doctrine Configuration
 doctrine:
     dbal:
         driver: pdo_sqlite
