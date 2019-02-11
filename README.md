@@ -1,4 +1,4 @@
-#AddressBook
+AddressBook
 
 An address book in which you can add, edit and delete entries - Symfony 3.4, PHP7, Doctrine with SQLite and Twig
 
