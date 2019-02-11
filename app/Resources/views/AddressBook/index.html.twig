@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %} Contacts overview {% endblock %} 
+{% block body %}
+<div class="container">
+   <h1>Overview</h1>
+   <div class="messages">
+      {% for type, messages in app.flashes %}
+      {% for message in messages %}
+      {# Bootstrap alert, see http://getbootstrap.com/components/#alerts #}
+      <div class="alert alert-success alert-dismissible alert-{{ type }} fade in" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
+         {{ message|trans }}
+      </div>
+      {% endfor %}
+      {% endfor %}
+   </div>
+   {% if contact %} 
+   <table class="table table-striped">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Street&nbsp;and&nbsp;number</th>
+            <th>Zip</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Birthday</th>
+            <th>Email</th>
+            <th>Picture</th>
+            <th>Actions</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for contacts in contact  %} 
+         <tr>
+            <td style="white-space:nowrap;"> {{contacts.Lastname}}, {{contacts.Firstname}}</td>
+            <td> {{contacts.Street}}</td>
+            <td> {{contacts.Zip}}</td>
+            <td> {{contacts.City}}</td>
+            <td> {{contacts.Country}}</td>
+            <td> {{contacts.Birthday | date("d.m.Y")}}</td>
+            <td> {{contacts.Email}}</td>
+            <td> {{contacts.Picture}}</td>
+            <td style="white-space:nowrap;">
+               <a href="edit/{{contacts.id}}" class="btn btn-primary">edit</a>&nbsp;<a href="delete/{{contacts.id}}" class="btn btn-danger">delete</a>
+            </td>
+         </tr>
+         {% endfor %} 
+      </tbody>
+   </table>
+   {% else %} 
+   <p>No cities</p>
+   {% endif %} 
+</div>
+{% endblock %}
